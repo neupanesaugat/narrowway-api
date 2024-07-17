@@ -43,7 +43,9 @@ router.post(
     if (!admin) {
       return res.status(401).send({ message: "Unauthorized" });
     }
-    req.loggedInUserId = admin._id; //? adding new field in request with admin id
+
+    //? extracting id of admin from the token
+    req.loggedInUserId = admin._id; // adding new field in request with admin id
 
     next();
   },
