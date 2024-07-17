@@ -11,9 +11,8 @@ const router = express.Router();
 router.post(
   "/add",
 
+  // validate token
   async (req, res, next) => {
-    // validate token
-
     validateReqBody(validateCourseSchema);
     //? extract token from req.headers
     const authorization = req.headers.authorization;
@@ -52,7 +51,7 @@ router.post(
     next();
   },
 
-  //? call next function
+  // call next function (add course)
   async (req, res) => {
     //extract new course from req.body
     const newCourse = req.body;
@@ -109,6 +108,8 @@ router.get(
 
     next();
   },
+
+  //get admin list
   async (req, res) => {
     const courses = await Course.aggregate([
       {
