@@ -126,10 +126,18 @@ router.get(
 
       {
         $project: {
+          _id: 0,
           name: 1,
           price: 1,
           duration: 1,
           adminEmail: { $first: "$adminDetails.email" },
+          adminName: {
+            $concat: [
+              { $first: "$adminDetails.firstName" },
+              " ",
+              { $first: "$adminDetails.lastName" },
+            ],
+          },
         },
       },
     ]);
