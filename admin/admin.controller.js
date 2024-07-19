@@ -31,7 +31,7 @@ router.post(
     const plainPassword = newAdmin.password;
     const saltRound = 10; // increases randomness
     //calling function from utils/password
-    const hashedPassword = await bcrypt.generateHashedPassword(
+    const hashedPassword = await generateHashedPassword(
       plainPassword,
       saltRound
     );
